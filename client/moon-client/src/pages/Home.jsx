@@ -56,83 +56,111 @@ export default function Home() {
   const products = [
     {
       id: 1,
-      name: "Midnight Velvet Gown",
-      priceUsd: 450,
-      img: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/64/1200/1600",
-      category: "Evening Couture",
-      details:
-        "Sculpted silhouette with luminous velvet finish. Built for red-carpet nights, receptions, and statement entrances.",
+      name: "Kanchipuram Gold Saree",
+      priceUsd: 490,
+      img: "https://images.unsplash.com/photo-1594736797933-d0c9aab6af0a?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/64/900/1200",
+      category: "Tamil Nadu Classic",
+      details: "Pure silk drape with temple-border motifs and warm golden zari for premium wedding styling.",
     },
     {
       id: 2,
-      name: "Golden Silk Wrap",
-      priceUsd: 290,
-      img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/838/1200/1600",
-      category: "Festive Luxe",
-      details:
-        "Lightweight drape with a fluid golden texture. Perfect for wedding events and festive modern styling.",
+      name: "Banarasi Royal Weave",
+      priceUsd: 520,
+      img: "https://images.unsplash.com/photo-1610030469668-cc17fa8ff708?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/838/900/1200",
+      category: "Uttar Pradesh Heritage",
+      details: "Detailed brocade texture with soft sheen, crafted for festive evenings and grand receptions.",
     },
     {
       id: 3,
-      name: "Noir Evening Blazer",
-      priceUsd: 320,
-      img: "https://images.unsplash.com/photo-1539109136881-3be061094fed?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/823/1200/1600",
-      category: "Power Edit",
-      details:
-        "Tailored structure with contemporary street-luxury attitude. Designed for elevated day-to-night transitions.",
+      name: "Bandhani Mirror Lehenga",
+      priceUsd: 430,
+      img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/823/900/1200",
+      category: "Gujarat Folk",
+      details: "Color-rich bandhani with mirror accents inspired by Garba nights and celebratory dance culture.",
     },
     {
       id: 4,
-      name: "Ivory Bloom Co-ord",
-      priceUsd: 210,
-      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/1011/1200/1600",
-      category: "Global Resort",
-      details:
-        "Soft modern layering with travel-ready comfort. Minimal, polished, and trend-forward for every season.",
+      name: "Phulkari Festive Suit",
+      priceUsd: 260,
+      img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1011/900/1200",
+      category: "Punjab Bright Edit",
+      details: "Signature embroidery and vivid tones in a breathable silhouette for day-to-night events.",
     },
     {
       id: 5,
-      name: "Obsidian Saree Edit",
-      priceUsd: 380,
-      img: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/1027/1200/1600",
-      category: "Modern Ethnic",
-      details:
-        "A contemporary drape with minimalist shimmer and fluid movement for premium festive evenings.",
+      name: "Kasavu Kerala Set",
+      priceUsd: 275,
+      img: "https://images.unsplash.com/photo-1610030469859-52b8c5f4f8f0?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1027/900/1200",
+      category: "Kerala Grace",
+      details: "Off-white palette with gold edge detailing, styled for elegant festive mornings and pujas.",
     },
     {
       id: 6,
-      name: "Auric Fusion Lehenga",
-      priceUsd: 510,
-      img: "https://images.unsplash.com/photo-1583391733956-6c77a5fbe2b6?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/1005/1200/1600",
-      category: "Wedding Edit",
-      details:
-        "Handcrafted embellishment and runway silhouette crafted for wedding statement styling.",
+      name: "Paithani Peacock Drape",
+      priceUsd: 470,
+      img: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1005/900/1200",
+      category: "Maharashtra Royal",
+      details: "Traditional peacock pallu and luxe weave balance old-world craft with modern blouse styling.",
     },
     {
       id: 7,
-      name: "Midnight Street Set",
+      name: "Lucknowi Chikankari Set",
       priceUsd: 240,
-      img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/1001/1200/1600",
-      category: "Street Luxe",
-      details:
-        "Structured coordinates with soft comfort layers designed for city-ready premium fashion looks.",
+      img: "https://images.unsplash.com/photo-1583391733981-8496f3db3b88?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1001/900/1200",
+      category: "Awadhi Elegance",
+      details: "Soft pastel hand-embroidery designed for intimate gatherings, summer weddings, and brunch looks.",
     },
     {
       id: 8,
-      name: "Royal Ember Cape",
-      priceUsd: 430,
-      img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=1200",
-      fallbackImg: "https://picsum.photos/id/1012/1200/1600",
-      category: "Limited Drop",
-      details:
-        "High-impact cape layering with dramatic textures inspired by global fashion week runways.",
+      name: "Rajasthani Gota Anarkali",
+      priceUsd: 360,
+      img: "https://images.unsplash.com/photo-1622365501432-1f84ecdb95ec?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1012/900/1200",
+      category: "Rajasthan Regal",
+      details: "Flowy flare with gota-patti highlights and festive movement for sangeet and destination weddings.",
+    },
+    {
+      id: 9,
+      name: "Mekhela Chador Bloom",
+      priceUsd: 335,
+      img: "https://images.unsplash.com/photo-1610018556010-6a11691bc905?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1035/900/1200",
+      category: "Assam Silk",
+      details: "Assam-inspired two-piece drape with woven floral accents and rich texture depth.",
+    },
+    {
+      id: 10,
+      name: "Nauvari Fusion Drape",
+      priceUsd: 315,
+      img: "https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1025/900/1200",
+      category: "Maharashtra Contemporary",
+      details: "Bold nine-yard inspired styling with lightweight comfort for stage and festive performances.",
+    },
+    {
+      id: 11,
+      name: "Pochampally Ikat Saree",
+      priceUsd: 350,
+      img: "https://images.unsplash.com/photo-1610189002634-36f4a84f8083?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1014/900/1200",
+      category: "Telangana Craft",
+      details: "Graphic Ikat patterns in jewel tones for modern ethnic wardrobes and office festivities.",
+    },
+    {
+      id: 12,
+      name: "Kashmiri Pheran Luxe",
+      priceUsd: 295,
+      img: "https://images.unsplash.com/photo-1593014109521-48ea09f225ca?auto=format&fit=crop&q=80&w=900",
+      fallbackImg: "https://picsum.photos/id/1021/900/1200",
+      category: "Kashmir Winter Edit",
+      details: "Warm layered silhouette with intricate threadwork inspired by valley craftsmanship.",
     },
   ];
 
@@ -227,7 +255,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      <section className="grid grid-cols-1 gap-8 px-6 pb-16 md:grid-cols-2 md:px-10 xl:grid-cols-4">
+      <section className="grid grid-cols-2 gap-4 px-4 pb-16 md:grid-cols-3 md:gap-6 md:px-10 xl:grid-cols-5">
         {products.map((product, idx) => (
           <motion.div
             key={product.id}
@@ -235,12 +263,12 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.08 }}
-            className="group rounded-3xl border border-yellow-600/20 bg-white p-3 shadow-md"
+            className="group rounded-2xl border border-yellow-600/20 bg-white p-2 shadow-md"
           >
             <button
               type="button"
               onClick={() => setActiveProduct(product)}
-              className="relative mb-4 block aspect-[3/4] w-full overflow-hidden rounded-2xl"
+              className="relative mb-3 block aspect-[4/5] w-full overflow-hidden rounded-xl"
             >
               <img
                 src={product.img}
@@ -251,7 +279,7 @@ export default function Home() {
                     e.currentTarget.src = product.fallbackImg;
                   }
                 }}
-                  className="h-full w-full rounded-2xl object-cover transition duration-700 group-hover:scale-110"
+                  className="h-full w-full rounded-xl object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 transition group-hover:opacity-100">
                 <span className="rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-black">
@@ -260,11 +288,11 @@ export default function Home() {
               </div>
             </button>
             <p className="text-[10px] uppercase tracking-[0.35em] text-yellow-300">{product.category}</p>
-            <h3 className="mt-2 text-lg font-bold text-[#1f2937]">{product.name}</h3>
-            <p className="mt-2 text-xl font-black text-yellow-300">{formatINR(product.priceUsd)}</p>
+            <h3 className="mt-2 text-sm font-bold text-[#1f2937] md:text-base">{product.name}</h3>
+            <p className="mt-1 text-lg font-black text-yellow-300">{formatINR(product.priceUsd)}</p>
             <button
               onClick={() => addToCart(product)}
-              className="mt-4 w-full rounded-xl border border-yellow-600/40 bg-yellow-50 py-3 text-[11px] font-bold uppercase tracking-[0.22em] transition hover:bg-yellow-400 hover:text-[#1f2937]"
+              className="gold-neon-btn mt-3 w-full rounded-lg py-2 text-[10px] font-bold uppercase tracking-[0.18em] transition"
             >
               Add to Cart
             </button>

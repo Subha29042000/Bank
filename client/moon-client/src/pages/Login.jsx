@@ -118,7 +118,7 @@ export default function Login() {
               <input
                 type="email"
                 className="w-full bg-[#fffaf5] border border-yellow-600/20 p-4 rounded-xl text-[#1f2937] outline-none focus:border-gold/70 transition-all duration-500"
-                placeholder="golden.muse@moonvault.in"
+                placeholder="Identity"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 autoComplete="off"
@@ -131,7 +131,7 @@ export default function Login() {
               <input
                 type="password"
                 className="w-full bg-[#fffaf5] border border-yellow-600/20 p-4 rounded-xl text-[#1f2937] outline-none focus:border-gold/70 transition-all duration-500"
-                placeholder="CrownCode#2026"
+                placeholder="Crown Code"
                 value={form.password}
                 onChange={(e) => setForm({ ...form, password: e.target.value })}
                 autoComplete="new-password"
@@ -146,7 +146,7 @@ export default function Login() {
                 boxShadow: "0 0 20px rgba(212, 175, 55, 0.3)"
               }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-gold-gradient text-[#1f2937] font-black py-4 rounded-xl uppercase tracking-[0.2em] text-[11px] mt-6 transition-all shadow-xl shadow-gold/20"
+              className="gold-neon-btn w-full py-4 rounded-xl font-black uppercase tracking-[0.2em] text-[11px] mt-6 transition-all"
             >
               {loading ? "Authorizing..." : "Authorize"}
             </motion.button>
