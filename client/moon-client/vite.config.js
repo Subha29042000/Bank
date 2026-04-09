@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 
 export default defineConfig({
-base: '/Fashion/',
+base: '/Bank/',
 
 plugins: [
 

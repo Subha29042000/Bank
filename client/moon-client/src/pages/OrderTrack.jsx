@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const formatINR = (value) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value || 0);
@@ -11,7 +11,7 @@ export default function OrderTrack() {
   return (
     <div className="min-h-screen bg-[#070711] px-5 py-14 text-white">
       <div className="mx-auto max-w-3xl">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+        <Motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
           <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">Order Tracking</p>
           <h1 className="mt-3 text-4xl font-black">Payment Successful</h1>
           <p className="mt-2 text-white/70">Your order is confirmed and now being prepared for dispatch.</p>
@@ -38,8 +38,9 @@ export default function OrderTrack() {
               New Order
             </button>
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
     </div>
   );
 }
+

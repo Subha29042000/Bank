@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const formatINR = (value) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(value || 0);
@@ -11,7 +11,9 @@ export default function MyOrders() {
     let user = null;
     try {
       user = JSON.parse(localStorage.getItem("user") || "null");
-    } catch {}
+    } catch {
+      user = null;
+    }
     const userKey = user?.id || user?.email || "guest";
     const scopedOrders = JSON.parse(localStorage.getItem(`myOrders:${userKey}`) || "[]");
     return scopedOrders;
@@ -23,7 +25,7 @@ export default function MyOrders() {
         <div className="absolute left-[-10%] top-[-20%] h-140 w-140 rounded-full bg-yellow-400/15 blur-3xl" />
       </div>
       <div className="mx-auto max-w-4xl">
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-yellow-300/30 bg-white p-7 shadow-md">
+        <Motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-yellow-300/30 bg-white p-7 shadow-md">
           <div className="mb-6 flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">My Orders</p>
@@ -55,8 +57,9 @@ export default function MyOrders() {
               ))
             )}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
     </div>
   );
 }
+

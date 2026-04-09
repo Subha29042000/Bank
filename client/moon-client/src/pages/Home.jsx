@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 
 const INR_RATE = 83;
 
@@ -56,111 +56,111 @@ export default function Home() {
   const products = [
     {
       id: 1,
-      name: "Kanchipuram Gold Saree",
+      name: "Kanchipuram Silk Saree",
       priceUsd: 490,
-      img: "https://source.unsplash.com/900x1200/?kanchipuram,saree,flatlay,garment,clothing&sig=1",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Peach%20saree.jpg",
       fallbackImg: "https://picsum.photos/id/64/900/1200",
       category: "Tamil Nadu Classic",
-      details: "Pure silk drape with temple-border motifs and warm golden zari for premium wedding styling.",
+      details: "Authentic Kanchipuram weave reference with korvai border structure and silk-rich traditional finish.",
     },
     {
       id: 2,
-      name: "Banarasi Royal Weave",
+      name: "Banarasi Work Saree",
       priceUsd: 520,
-      img: "https://source.unsplash.com/900x1200/?banarasi,saree,textile,garment,clothing&sig=2",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Crape%20silk%20fabric%20Banarasi%20work%20bandhani%20saree.jpg",
       fallbackImg: "https://picsum.photos/id/838/900/1200",
       category: "Uttar Pradesh Heritage",
-      details: "Detailed brocade texture with soft sheen, crafted for festive evenings and grand receptions.",
+      details: "Banarasi-inspired silk with detailed woven texture and festive richness for occasion wear.",
     },
     {
       id: 3,
-      name: "Bandhani Mirror Lehenga",
+      name: "Bandhej Saree",
       priceUsd: 430,
-      img: "https://source.unsplash.com/900x1200/?lehenga,embroidered,flatlay,garment,clothing&sig=3",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Bandhej.JPG",
       fallbackImg: "https://picsum.photos/id/823/900/1200",
       category: "Gujarat Folk",
-      details: "Color-rich bandhani with mirror accents inspired by Garba nights and celebratory dance culture.",
+      details: "Classic Bandhej tie-dye textile aesthetic from Rajasthan-Gujarat craft traditions.",
     },
     {
       id: 4,
-      name: "Phulkari Festive Suit",
+      name: "Chanderi Saree",
       priceUsd: 260,
-      img: "https://source.unsplash.com/900x1200/?phulkari,salwar,suit,flatlay,clothing&sig=4",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Chanderi%20saree.webp",
       fallbackImg: "https://picsum.photos/id/1011/900/1200",
-      category: "Punjab Bright Edit",
-      details: "Signature embroidery and vivid tones in a breathable silhouette for day-to-night events.",
+      category: "Madhya Pradesh Craft",
+      details: "Lightweight Chanderi-style drape known for airy texture and elegant festive versatility.",
     },
     {
       id: 5,
-      name: "Kasavu Kerala Set",
+      name: "Koorai Silk Saree",
       priceUsd: 275,
-      img: "https://source.unsplash.com/900x1200/?kerala,kasavu,saree,folded,clothing&sig=5",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Koorai%20silk%20saree%201.jpg",
       fallbackImg: "https://picsum.photos/id/1027/900/1200",
-      category: "Kerala Grace",
-      details: "Off-white palette with gold edge detailing, styled for elegant festive mornings and pujas.",
+      category: "South India Weave",
+      details: "Traditional silk saree styling with rich drape and classic South Indian bridal texture.",
     },
     {
       id: 6,
-      name: "Paithani Peacock Drape",
+      name: "Sambalpuri Saree (Red)",
       priceUsd: 470,
-      img: "https://source.unsplash.com/900x1200/?paithani,saree,zari,textile,clothing&sig=6",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Sambhalpuri%20Saree%20%28Red%29.jpg",
       fallbackImg: "https://picsum.photos/id/1005/900/1200",
-      category: "Maharashtra Royal",
-      details: "Traditional peacock pallu and luxe weave balance old-world craft with modern blouse styling.",
+      category: "Odisha Weave",
+      details: "Handloom-inspired Sambalpuri pattern language with bold color and regional identity.",
     },
     {
       id: 7,
-      name: "Lucknowi Chikankari Set",
+      name: "Sambalpuri Saree (Blue)",
       priceUsd: 240,
-      img: "https://source.unsplash.com/900x1200/?chikankari,kurti,flatlay,garment,clothing&sig=7",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Sambhalpuri%20Saree%20%28Blue%29.jpg",
       fallbackImg: "https://picsum.photos/id/1001/900/1200",
-      category: "Awadhi Elegance",
-      details: "Soft pastel hand-embroidery designed for intimate gatherings, summer weddings, and brunch looks.",
+      category: "Odisha Weave",
+      details: "Blue Sambalpuri textile reference with intricate motif rhythm and festive-friendly tone.",
     },
     {
       id: 8,
-      name: "Rajasthani Gota Anarkali",
+      name: "Banarasi Saree Display",
       priceUsd: 360,
-      img: "https://source.unsplash.com/900x1200/?anarkali,gown,flatlay,garment,clothing&sig=8",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Banarasi%20Sari%20on%20viewing%20wooden%20blocks%2001.jpg",
       fallbackImg: "https://picsum.photos/id/1012/900/1200",
-      category: "Rajasthan Regal",
-      details: "Flowy flare with gota-patti highlights and festive movement for sangeet and destination weddings.",
+      category: "Varanasi Heritage",
+      details: "Banarasi sari shown with artisan block references reflecting craft-driven styling aesthetics.",
     },
     {
       id: 9,
-      name: "Mekhela Chador Bloom",
+      name: "Silver Border Saree",
       priceUsd: 335,
-      img: "https://source.unsplash.com/900x1200/?mekhela,chador,textile,garment,clothing&sig=9",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Saree%20with%20silver%20border.jpg",
       fallbackImg: "https://picsum.photos/id/1035/900/1200",
-      category: "Assam Silk",
-      details: "Assam-inspired two-piece drape with woven floral accents and rich texture depth.",
+      category: "Contemporary Saree",
+      details: "Minimal metallic-border saree styling for modern events and understated festive elegance.",
     },
     {
       id: 10,
-      name: "Nauvari Fusion Drape",
+      name: "Silk Saree",
       priceUsd: 315,
-      img: "https://source.unsplash.com/900x1200/?nauvari,saree,folded,garment,clothing&sig=10",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Silk%20saree.jpg",
       fallbackImg: "https://picsum.photos/id/1025/900/1200",
-      category: "Maharashtra Contemporary",
-      details: "Bold nine-yard inspired styling with lightweight comfort for stage and festive performances.",
+      category: "Classic Silk",
+      details: "General silk saree reference focused on fabric richness, shine, and drape quality.",
     },
     {
       id: 11,
-      name: "Pochampally Ikat Saree",
+      name: "Sari for Sale",
       priceUsd: 350,
-      img: "https://source.unsplash.com/900x1200/?pochampally,ikat,saree,textile,clothing&sig=11",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Sari%20for%20sale.jpg",
       fallbackImg: "https://picsum.photos/id/1014/900/1200",
-      category: "Telangana Craft",
-      details: "Graphic Ikat patterns in jewel tones for modern ethnic wardrobes and office festivities.",
+      category: "Retail Edit",
+      details: "Retail-style saree presentation with fabric-first view for shopping-focused product display.",
     },
     {
       id: 12,
-      name: "Kashmiri Pheran Luxe",
+      name: "Saree Weaving by Handloom",
       priceUsd: 295,
-      img: "https://source.unsplash.com/900x1200/?kashmiri,pheran,wool,garment,clothing&sig=12",
+      img: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Saree%20Weaving%20by%20Handloom.jpg",
       fallbackImg: "https://picsum.photos/id/1021/900/1200",
-      category: "Kashmir Winter Edit",
-      details: "Warm layered silhouette with intricate threadwork inspired by valley craftsmanship.",
+      category: "Handloom Craft",
+      details: "Handloom process reference highlighting weaving heritage behind premium saree production.",
     },
   ];
 
@@ -198,13 +198,13 @@ export default function Home() {
       </div>
 
       <nav className="fixed top-0 z-40 flex w-full items-center justify-between border-b border-yellow-600/20 bg-white/80 px-6 py-4 backdrop-blur-xl md:px-10">
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="bg-gradient-to-r from-yellow-200 via-yellow-400 to-amber-200 bg-clip-text text-xl font-black tracking-[0.25em] text-transparent md:text-2xl"
         >
           MOON FASHION
-        </motion.h1>
+        </Motion.h1>
         <div className="flex items-center gap-3 md:gap-6">
           <button
             onClick={() => navigate("/profile")}
@@ -237,7 +237,7 @@ export default function Home() {
       </nav>
 
       <section className="px-6 pb-14 pt-36 md:px-10 md:pt-40">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9 }}>
+        <Motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9 }}>
           <p className="mb-4 text-xs uppercase tracking-[0.45em] text-yellow-300">Worldwide Trend 2026</p>
           <h2 className="max-w-4xl text-5xl font-black leading-[0.95] md:text-7xl">
             Future <span className="italic text-yellow-300">Runway</span> for Modern India
@@ -252,12 +252,12 @@ export default function Home() {
           >
             Explore Drops
           </button>
-        </motion.div>
+        </Motion.div>
       </section>
 
       <section className="grid grid-cols-2 gap-4 px-4 pb-16 md:grid-cols-3 md:gap-6 md:px-10 xl:grid-cols-5">
         {products.map((product, idx) => (
-          <motion.div
+          <Motion.div
             key={product.id}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -296,21 +296,21 @@ export default function Home() {
             >
               Add to Cart
             </button>
-          </motion.div>
+          </Motion.div>
         ))}
       </section>
 
       <AnimatePresence>
         {activeProduct && (
           <>
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveProduct(null)}
               className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
             />
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0, y: 25, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 25, scale: 0.98 }}
@@ -348,7 +348,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
           </>
         )}
       </AnimatePresence>
@@ -356,14 +356,14 @@ export default function Home() {
       <AnimatePresence>
         {isCartOpen && (
           <>
-            <motion.div
+            <Motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsCartOpen(false)}
               className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
             />
-            <motion.aside
+            <Motion.aside
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -382,7 +382,7 @@ export default function Home() {
                   <p className="mt-16 text-center italic text-[#1f2937]/45">Your style cart is waiting.</p>
                 ) : (
                   cart.map((item) => (
-                    <motion.div
+                    <Motion.div
                       key={item.cartId}
                       layout
                       className="flex items-center gap-3 rounded-2xl border border-yellow-600/20 bg-white p-2"
@@ -398,7 +398,7 @@ export default function Home() {
                       >
                         Remove
                       </button>
-                    </motion.div>
+                    </Motion.div>
                   ))
                 )}
               </div>
@@ -428,7 +428,7 @@ export default function Home() {
                   Proceed to Buy
                 </button>
               </div>
-            </motion.aside>
+            </Motion.aside>
           </>
         )}
       </AnimatePresence>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ export default function Profile() {
       <div className="pointer-events-none fixed inset-0 -z-10 opacity-70">
         <div className="absolute left-[-10%] top-[-20%] h-[35rem] w-[35rem] rounded-full bg-yellow-400/15 blur-3xl" />
       </div>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mx-auto max-w-2xl rounded-3xl border border-yellow-300/30 bg-white p-8 shadow-md">
+      <Motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mx-auto max-w-2xl rounded-3xl border border-yellow-300/30 bg-white p-8 shadow-md">
         <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">Profile</p>
         <h1 className="mt-2 text-4xl font-black">My Account</h1>
         {loading ? (
@@ -103,7 +103,8 @@ export default function Profile() {
             </div>
           </form>
         )}
-      </motion.div>
+      </Motion.div>
     </div>
   );
 }
+

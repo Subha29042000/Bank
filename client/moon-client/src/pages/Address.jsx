@@ -380,7 +380,7 @@
 
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const DEFAULT_AMOUNT_INR = 10;
 const formatINR = (value) =>
@@ -555,7 +555,7 @@ export default function Address() {
       </div>
 
       <div className="mx-auto grid min-h-screen w-full max-w-6xl grid-cols-1 gap-8 px-5 py-10 md:grid-cols-2 md:px-8">
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="rounded-3xl border border-yellow-600/20 bg-white p-7 shadow-md">
+        <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="rounded-3xl border border-yellow-600/20 bg-white p-7 shadow-md">
           <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">Checkout Summary</p>
           <h2 className="mt-3 text-4xl font-black leading-tight">Secure Payment</h2>
           <p className="mt-4 text-[#1f2937]/70">Your selected items and total are now synced from Home page.</p>
@@ -573,9 +573,9 @@ export default function Address() {
               <span className="text-yellow-300">{formatINR(payableAmountInr)}</span>
             </div>
           </div>
-        </motion.div>
+        </Motion.div>
 
-        <motion.form
+        <Motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -619,19 +619,20 @@ export default function Address() {
               Cancel Payment
             </button>
           )}
-        </motion.form>
+        </Motion.form>
       </div>
 
       {showSuccessPopup && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/65 backdrop-blur-sm">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-[92%] max-w-md rounded-2xl border border-yellow-400/40 bg-white p-6 text-center shadow-2xl">
+          <Motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-[92%] max-w-md rounded-2xl border border-yellow-400/40 bg-white p-6 text-center shadow-2xl">
             <p className="text-xs uppercase tracking-[0.3em] text-yellow-300">Order Update</p>
             <h3 className="mt-3 text-2xl font-black">Order Confirmed</h3>
             <p className="mt-2 text-sm text-[#1f2937]/70">Payment successful. Redirecting to tracking page...</p>
             <p className="mt-3 text-xs text-yellow-200">{successPaymentId}</p>
-          </motion.div>
+          </Motion.div>
         </div>
       )}
     </div>
   );
 }
+

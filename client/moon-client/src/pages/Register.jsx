@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -66,7 +66,7 @@ export default function Register() {
       {/* Background Ambient Glows */}
       <div className="absolute top-[-20%] left-[-10%] w-125 h-125 bg-gold/5 blur-[150px] rounded-full" />
       
-      <motion.div 
+      <Motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -75,7 +75,7 @@ export default function Register() {
         
         {/* Right Side: Trendy Fashion Image (Reversed for visual variety) */}
         <div className="hidden md:block md:w-1/2 relative overflow-hidden group">
-          <motion.img 
+          <Motion.img 
             initial={{ scale: 1.3 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2 }}
@@ -97,19 +97,19 @@ export default function Register() {
         </div>
 
         {/* Left Side: Form */}
-        <motion.div 
+        <Motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="w-full md:w-1/2 p-8 md:p-20 flex flex-col justify-center bg-white"
         >
-          <motion.div variants={itemVariants} className="mb-12">
+          <Motion.div variants={itemVariants} className="mb-12">
             <h1 className="text-4xl font-bold text-[#1f2937] mb-2">Create Account</h1>
             <p className="text-[#1f2937]/60 font-sans text-sm">Experience fashion in its purest form.</p>
-          </motion.div>
+          </Motion.div>
 
           <form onSubmit={handleSubmit} className="space-y-5" autoComplete="off">
-            <motion.div variants={itemVariants} className="space-y-1">
+            <Motion.div variants={itemVariants} className="space-y-1">
               <label className="text-[10px] uppercase tracking-widest text-gold font-bold ml-1">What should we call you?</label>
               <input
                 className="w-full bg-[#fffaf5] border border-yellow-600/20 p-4 rounded-xl text-[#1f2937] outline-none focus:border-gold transition-all duration-300"
@@ -119,9 +119,9 @@ export default function Register() {
                 autoComplete="off"
                 required
               />
-            </motion.div>
+            </Motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-1">
+            <Motion.div variants={itemVariants} className="space-y-1">
               <label className="text-[10px] uppercase tracking-widest text-gold font-bold ml-1">Where can we deliver your style vibe?</label>
               <input
                 type="email"
@@ -132,9 +132,9 @@ export default function Register() {
                 autoComplete="off"
                 required
               />
-            </motion.div>
+            </Motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-1">
+            <Motion.div variants={itemVariants} className="space-y-1">
               <label className="text-[10px] uppercase tracking-widest text-gold font-bold ml-1">Keep it Secret</label>
               <input
                 type="password"
@@ -145,27 +145,28 @@ export default function Register() {
                 autoComplete="new-password"
                 required
               />
-            </motion.div>
+            </Motion.div>
 
-            <motion.button 
+            <Motion.button 
               variants={itemVariants}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-gold-gradient text-[#1f2937] font-black py-4 rounded-xl uppercase tracking-[0.3em] text-[10px] mt-8 shadow-2xl shadow-gold/20"
             >
               {loading ? "Creating..." : "Begin Journey"}
-            </motion.button>
+            </Motion.button>
           </form>
 
-          <motion.p variants={itemVariants} className="mt-10 text-center text-[#1f2937] text-xs tracking-widest">
+          <Motion.p variants={itemVariants} className="mt-10 text-center text-[#1f2937] text-xs tracking-widest">
             ALREADY A MEMBER?{" "}
             <Link to="/login" className="text-gold font-bold hover:underline underline-offset-4 ml-2 transition-all">
               SIGN IN
             </Link>
-          </motion.p>
-        </motion.div>
+          </Motion.p>
+        </Motion.div>
 
-      </motion.div>
+      </Motion.div>
     </div>
   );
 }
+

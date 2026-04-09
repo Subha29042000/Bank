@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -23,7 +23,7 @@ function App() {
     <>
       <AnimatePresence>
         {showSplash && (
-          <motion.div
+          <Motion.div
             key="splash"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -31,15 +31,15 @@ function App() {
             className="fixed inset-0 z-[200] flex items-center justify-center bg-[#0f0c04]"
           >
             <div className="gold-glitter-layer absolute inset-0" />
-            <motion.h1
+            <Motion.h1
               initial={{ y: 16, opacity: 0, scale: 0.96 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
               className="gold-shine-text relative z-10 px-4 text-center text-4xl font-black tracking-[0.35em] md:text-6xl"
             >
               MOON FASHION
-            </motion.h1>
-          </motion.div>
+            </Motion.h1>
+          </Motion.div>
         )}
       </AnimatePresence>
 
@@ -60,3 +60,4 @@ function App() {
 }
 
 export default App;
+
