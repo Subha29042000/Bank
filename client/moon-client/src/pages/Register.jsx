@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -159,9 +159,9 @@ export default function Register() {
 
           <motion.p variants={itemVariants} className="mt-10 text-center text-[#1f2937] text-xs tracking-widest">
             ALREADY A MEMBER?{" "}
-            <a href="/login" className="text-gold font-bold hover:underline underline-offset-4 ml-2 transition-all">
+            <Link to="/login" className="text-gold font-bold hover:underline underline-offset-4 ml-2 transition-all">
               SIGN IN
-            </a>
+            </Link>
           </motion.p>
         </motion.div>
 
