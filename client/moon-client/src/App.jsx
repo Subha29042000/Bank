@@ -9,8 +9,10 @@ import Profile from "./pages/Profile";
 import MyOrders from "./pages/MyOrders";
 
 function App() {
+  const basename = import.meta.env.BASE_URL === "/" ? undefined : import.meta.env.BASE_URL;
+
   return (
-    <Router>
+    <Router basename={basename}>
       <MouseAura />
       <Routes>
         <Route path="/" element={<Register />} />
