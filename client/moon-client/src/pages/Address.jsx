@@ -378,7 +378,7 @@
 
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
 
@@ -398,6 +398,7 @@ export default function Address() {
   const [activeRzp, setActiveRzp] = useState(null);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [successPaymentId, setSuccessPaymentId] = useState("");
+  const hasRecordedOrderRef = useRef(false);
 
   const getCurrentUser = () => {
     try {
@@ -454,6 +455,7 @@ export default function Address() {
 
   const handlePayment = async () => {
     if (isCreatingPayment) return;
+    hasRecordedOrderRef.current = false;
     setIsCreatingPayment(true);
     try {
       const res = await fetch("http://localhost:5000/api/payment/create-order", {
@@ -488,6 +490,10 @@ export default function Address() {
         ...(upiConfig ? { upi: upiConfig } : {}),
         retry: { enabled: false },
         handler: (response) => {
+          // Only persist confirmed orders once, and only with a valid payment id.
+          if (hasRecordedOrderRef.current) return;
+          if (!response?.razorpay_payment_id) return;
+          hasRecordedOrderRef.current = true;
           setShowPaymentActions(false);
           setActiveRzp(null);
           saveOrder(response.razorpay_payment_id, form.payment);
@@ -508,6 +514,12 @@ export default function Address() {
       };
 
       const rzp = new window.Razorpay(options);
+      rzp.on("payment.failed", () => {
+        hasRecordedOrderRef.current = false;
+        setShowPaymentActions(false);
+        setActiveRzp(null);
+        alert("Payment failed. No order was created.");
+      });
       setActiveRzp(rzp);
       setShowPaymentActions(true);
       rzp.open();
@@ -519,6 +531,7 @@ export default function Address() {
   };
 
   const handleCancelPayment = () => {
+    hasRecordedOrderRef.current = false;
     if (activeRzp?.close) activeRzp.close();
     setShowPaymentActions(false);
     setActiveRzp(null);
