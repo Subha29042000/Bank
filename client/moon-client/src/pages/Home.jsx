@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion as Motion, AnimatePresence } from "framer-motion";
+import { apiUrl, isApiBaseConfigured } from "../apiBase";
 
 const INR_RATE = 83;
 
@@ -28,8 +29,9 @@ export default function Home() {
     const token = localStorage.getItem("token");
     if (!token) navigate("/login");
     if (!token) return;
+    if (!isApiBaseConfigured()) return;
 
-    fetch("http://localhost:5000/api/auth/me", {
+    fetch(apiUrl("/api/auth/me"), {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(async (res) => {
@@ -180,14 +182,19 @@ export default function Home() {
 
   const handleLogout = () => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/api/auth/logout", {
-      method: "POST",
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    }).finally(() => {
+    const clearSession = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       navigate("/login", { replace: true });
-    });
+    };
+    if (!isApiBaseConfigured()) {
+      clearSession();
+      return;
+    }
+    fetch(apiUrl("/api/auth/logout"), {
+      method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    }).finally(clearSession);
   };
 
   return (

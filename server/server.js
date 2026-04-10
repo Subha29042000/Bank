@@ -51,8 +51,31 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const app = express();
 
-// Middleware
-app.use(cors());
+function parseCorsOrigins() {
+  const fromEnv = process.env.CORS_ORIGINS;
+  if (fromEnv) {
+    return fromEnv.split(",").map((s) => s.trim()).filter(Boolean);
+  }
+  return [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://subha29042000.github.io",
+  ];
+}
+
+// Middleware — allow GitHub Pages + local Vite; extend with CORS_ORIGINS in .env
+app.use(
+  cors({
+    origin(origin, callback) {
+      const allowed = parseCorsOrigins();
+      if (!origin || allowed.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(null, false);
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // MongoDB connection

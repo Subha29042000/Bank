@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
+import { apiUrl, isApiBaseConfigured, LIVE_SITE_NEEDS_API } from "../apiBase";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -11,7 +12,13 @@ export default function Profile() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return navigate("/login");
-    fetch("http://localhost:5000/api/auth/me", {
+    if (!isApiBaseConfigured()) {
+      alert(LIVE_SITE_NEEDS_API);
+      navigate("/home");
+      setLoading(false);
+      return;
+    }
+    fetch(apiUrl("/api/auth/me"), {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(async (res) => {
@@ -36,11 +43,15 @@ export default function Profile() {
     e.preventDefault();
     const token = localStorage.getItem("token");
     if (!token) return navigate("/login");
+    if (!isApiBaseConfigured()) {
+      alert(LIVE_SITE_NEEDS_API);
+      return;
+    }
     setSaving(true);
     try {
       const payload = { username: form.username.trim(), email: form.email.trim() };
       if (form.password.trim()) payload.password = form.password;
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch(apiUrl("/api/auth/me"), {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(payload),
@@ -60,8 +71,12 @@ export default function Profile() {
   const handleDelete = async () => {
     if (!window.confirm("Delete account permanently?")) return;
     const token = localStorage.getItem("token");
+    if (!isApiBaseConfigured()) {
+      alert(LIVE_SITE_NEEDS_API);
+      return;
+    }
     try {
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch(apiUrl("/api/auth/me"), {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

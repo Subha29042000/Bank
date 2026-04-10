@@ -381,6 +381,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
+import { apiUrl, isApiBaseConfigured, LIVE_SITE_NEEDS_API } from "../apiBase";
 
 const DEFAULT_AMOUNT_INR = 10;
 const formatINR = (value) =>
@@ -458,7 +459,10 @@ export default function Address() {
     hasRecordedOrderRef.current = false;
     setIsCreatingPayment(true);
     try {
-      const res = await fetch("http://localhost:5000/api/payment/create-order", {
+      if (!isApiBaseConfigured()) {
+        throw new Error(LIVE_SITE_NEEDS_API);
+      }
+      const res = await fetch(apiUrl("/api/payment/create-order"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: payableAmountInr }),

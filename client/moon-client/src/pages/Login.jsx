@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { apiUrl, isApiBaseConfigured, LIVE_SITE_NEEDS_API } from "../apiBase";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -33,9 +34,13 @@ export default function Login() {
     if (!form.email || !form.password) {
       return alert("Please fill all fields");
     }
+    if (!isApiBaseConfigured()) {
+      alert(LIVE_SITE_NEEDS_API);
+      return;
+    }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(apiUrl("/api/auth/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -46,7 +51,7 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(data.user));
       navigate("/home");
     } catch {
-      alert("Login failed. Please try again.");
+      alert("Cannot reach the server. If you use the live website, set the VITE_API_URL secret and redeploy. Locally, start the backend on port 5000.");
     } finally {
       setLoading(false);
     }

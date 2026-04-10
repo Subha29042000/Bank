@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { apiUrl, isApiBaseConfigured, LIVE_SITE_NEEDS_API } from "../apiBase";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -35,9 +36,13 @@ export default function Register() {
     if (!/^(?=.*[A-Za-z])(?=.*\d).{6,}$/.test(form.password)) {
       return alert("Password must be 6+ chars with letters and numbers");
     }
+    if (!isApiBaseConfigured()) {
+      alert(LIVE_SITE_NEEDS_API);
+      return;
+    }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch(apiUrl("/api/auth/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -55,7 +60,7 @@ export default function Register() {
       navigate("/login");
     } catch (err) {
       console.error(err);
-      alert("Error registering user");
+      alert("Cannot reach the server. If you use the live website, set the VITE_API_URL secret and redeploy. Locally, start the backend (port 5000) and try again.");
     } finally {
       setLoading(false);
     }
